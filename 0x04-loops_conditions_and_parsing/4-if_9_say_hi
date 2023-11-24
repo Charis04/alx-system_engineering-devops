@@ -4,9 +4,10 @@
 counter=0
 while [ $counter -lt 10 ]; do
 	if [ $counter = 8 ]; then
-		echo "Best shool"
-	else
+		echo "Best School"
 		echo "Hi"
+	else
+		echo "Best School"
 	fi
 	((counter++))
 done
