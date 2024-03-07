@@ -2,6 +2,6 @@
 for file in * ; do
 	if [ -f "$file" ]; then
                 name_part=$(echo "$file" | cut -d '-' -f 2-)
-		echo $name_part
+		echo "$name_part"
 	fi
 done
