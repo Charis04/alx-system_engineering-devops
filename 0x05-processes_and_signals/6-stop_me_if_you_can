@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Get the PID of the process
+
+pid=$(pgrep -f "4-to_infinity_and_beyond")
+
+# Check if the process is running
+if [ -n "$pid" ]; then
+	# Send a termination signal (SIGTERM) to the process
+	pkill -f "4-to_infinity_and_beyond"
+fi
