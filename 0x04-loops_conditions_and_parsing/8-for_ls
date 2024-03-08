@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
-for file in * ; do
+# Display the content of the current directory in a list format
+# Show only the part of the name after the first dash
+
+for file in *; do
 	if [ -f "$file" ]; then
-                name_part=$(echo "$file" | cut -d '-' -f 2-)
+		name_part=$(echo "$file" | cut -d '-' -f 2-)
 		echo "$name_part"
 	fi
 done
+
