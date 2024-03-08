@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Use awk to count occurrences of each combination of IP and HTTP status code
+awk '{ count[$1 " " $9]++ } END { for (combo in count) { print count[combo], combo } }' apache-access.log |
+# Sort the output by the number of occurrences in descending order
+sort -rn
+
