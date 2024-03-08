@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Set the field separator to ':'
+IFS=':'
+
+# Open /etc/passwd file for reading
+while IFS=: read -r username _ userid _ _ homedir _; do
+	# Print username, userid, and homedir
+	echo "$username:$userid:$homedir"
+done < /etc/passwd
