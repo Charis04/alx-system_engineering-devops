@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
+# Script that reads the content of etc/passwd
 
-# Set the field separator to ':'
 IFS=':'
 
 # Open /etc/passwd file for reading
