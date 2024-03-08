@@ -6,5 +6,5 @@ pid=$(pgrep -f "7-highlander")
 # Check if the process is running
 if [ -n "$pid" ]; then
 	# Send a termination signal (SIGKILL) to the process
-	kill -9 $pid
+	kill -9 "$pid"
 fi
