@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+#This script prints 12 hours
 hours=0
 while [ $hours -le 12 ]; do
-	echo "Hour: $hours"
 	minutes=1
+	echo "Hour: $hours"
 	while [ $minutes -lt 60 ]; do
 		echo "$minutes"
 		((minutes++))
