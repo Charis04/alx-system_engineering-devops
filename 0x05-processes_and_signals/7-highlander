@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script dispays a str indefinitely
+
+# Function to handle SIGTERM signal
+terminate_signal_handler() {
+	echo "I am invincible!!!"
+}
+
+# Trap SIGTERM signal and call terminate_signal_handler function
+trap terminate_signal_handler SIGTERM
+
+while true; do
+	echo "To infinity and beyond"
+	sleep 2
+done
