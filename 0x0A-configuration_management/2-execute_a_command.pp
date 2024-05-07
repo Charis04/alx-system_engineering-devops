@@ -2,5 +2,4 @@
 
 exec { 'kill_killmenow':
   command => '/usr/bin/pkill -f killmenow',
-  unless  => '! which pkill',
 }
