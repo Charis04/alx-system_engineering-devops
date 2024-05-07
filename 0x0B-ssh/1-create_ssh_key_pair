@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Creates an ssh key pair
+
+# Key filename (without extension)
+key_name="school"
+
+# Path to store the key pair (including extension)
+private_key="$HOME/.ssh/$key_name"
+
+# Generate a 4096-bit RSA key with passphrase "betty"
+ssh-keygen -t rsa -b 4096 -f "$private_key" -C "Your Name (your_email@example.com)"  << EOF
+betty
+betty
+EOF
