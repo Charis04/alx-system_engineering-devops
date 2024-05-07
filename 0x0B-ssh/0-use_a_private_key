@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Server address with username
+server="ubuntu@54.144.157.5"
+
+# Connect using SSH with private key
+ssh -i ~/.ssh/school $server
