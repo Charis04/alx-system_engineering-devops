@@ -8,7 +8,4 @@ key_name="school"
 private_key="$HOME/.ssh/$key_name"
 
 # Generate a 4096-bit RSA key with passphrase "betty"
-ssh-keygen -t rsa -b 4096 -f "$private_key"  << EOF
-betty
-betty
-EOF
+ssh-keygen -t rsa -b 4096 -f "$private_key" -N "betty"
