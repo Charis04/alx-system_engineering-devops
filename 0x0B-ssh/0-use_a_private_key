@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# A script that logs into a server using a private key
 
 # Server address with username
 server="ubuntu@54.144.157.5"
