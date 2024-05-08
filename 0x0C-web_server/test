@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+file_name="$0"
+arg="$1"
+echo "$file_name" "$arg"
