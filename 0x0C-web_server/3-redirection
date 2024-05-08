@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Configure server to redirect
 
-string="server_name _;\n\trewrite ^\/redirect_me https:\/\/charis.vzy.io\/ permanent;"
+new_site="https:\/\/charis.vzy.io\/"
+string="server_name _;\n\trewrite ^\/redirect_me $new_site permanent;"
 
 sudo sed -i s/"server_name _;"/"$string"/ /etc/nginx/sites-available/default
