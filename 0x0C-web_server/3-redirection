@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Configure server to redirect
+
+str="server_name _;\n\trewrite ^/redirect_me https://charis.vzy.io/ permanent;"
+
+sed -i s/"server_name _;"/"$str"/ /etc/nginx/sites_available/default

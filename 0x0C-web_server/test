@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+insert
+this;;
+this;
+
 file_name="$0"
 arg="$1"
 echo "$file_name" "$arg"
