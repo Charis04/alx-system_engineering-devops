@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Script to install nginx and configure
+
+# Update package lists
+sudo apt update
+
+# Install Nginx
+sudo apt-get -y install nginx
+
+# Stop Nginx (in case it's already running)
+sudo service nginx stop
+
+# Create a new basic website configuration file
+echo "server {
+  listen 80;
+  server_name localhost;
+
+  location / {
+    root /var/www/html;
+    index index.html index.htm;
+    try_files \$uri /index.html;
+  }
+}" > /etc/nginx/sites-available/default
+
+# Enable the new website configuration
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Create a simple index.html file
+echo "<!DOCTYPE html><html><body><h1>Hello World!</h1></body></html>" > /var/www/html/index.html
+
+# Change ownership of the HTML file (optional, but good practice)
+sudo chown -R www-data:www-data /var/www/html
+
+# Restart Nginx (using service instead of systemctl)
+sudo service nginx restart
