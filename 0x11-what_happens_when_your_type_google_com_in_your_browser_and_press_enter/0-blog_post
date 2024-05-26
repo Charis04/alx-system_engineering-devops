@@ -1,0 +1,82 @@
+What Happens When You Type https://www.google.com in Your Browser and Press Enter
+
+Have you ever wondered what happens behind the scenes when you type in a URL, for example, in the address bar of your browser and hit Enter, say, https://www.google.com? It’s an amazing journey in which a few technologies work together to bring that particular web page right in front of you in seconds. This blog post is a journey of the process beginning with DNS requests to TCP/IP, firewalls, HTTPS/SSL, load balancers, and web and application servers finally to databases. Let’s dive in!
+
+1. DNS Request
+
+The first thing it does to access the URL https://www.google.com is to resolve the domain name into an IP address via the Domain Name System. The process goes something like the following:
+
+- Browser Cache: It would then check cached resources to see if it has recently resolved to this domain.
+- Operating System Cache: In case it is not there, the browser then consults its operating system DNS cache.
+- Router Cache: If the information is not within the OS cache, the query falls back to the router, that itself has a cache.
+- ISP DNS Server: If the router doesn’t have the answer, forward the request to the Internet Service Provider’s DNS Server.
+- Recursive Searching: The DNS server for the ISP does a recursive search as well, reaching out to other DNSs to obtain the IP address for www.google.com.
+- Response: Once the IP address is found, it comes back up through the chain to the browser.
+
+2. Connection of the TCP
+
+This IP address that is obtained is connected with the Google server using the Transmission Control Protocol/Internet Protocol (TCP/IP) by the browser.
+
+- Three-Way Handshake: There are three steps :
+1. SYN: The browser sends a SYN (synchronize) packet to the server.
+2. SYN-ACK: Server replies with a SYN-ACK (.
+3. ACK: The browser acknowledges this with an ACK packet back to the server.
+- Connection Established: Completes the handshake, with the result that now a trustworthy medium has been established for the swapping of data.
+
+3. Firewall
+
+Firewalls are essential for security in the connection process:
+
+- Client-Side Firewall: This checks the traffic going out on the user’s end for safety.
+- Network Firewall: Network firewalls through which the request passes can monitor and control incoming and outgoing network traffic based on predetermined security rules.
+- Server-Side Firewall: Google will have server-side firewalls that guard the servers against any potential threats by filtering incoming traffic.
+
+4. HTTPS/
+
+The work in Google is done via the HTTPS protocol, which says that privacy and security are ensured since the data being sent back towards the server are collected.
+
+- SSL/TLS Handshake: This includes the following:
+1. Hello Messages: The client and the server exchange hello messages to determine the SSL/TLS version and the cipher suite to be used.
+2. Certificate Exchange: Server sends its SSL certificate which is validated by the browser using trusted CAs.
+3. Key Exchange: Key exchange for encryption.
+4. Secure Connection: Data is encrypted and decrypted with the help of these keys, so it is a very secure communication.
+
+5. Load Balancer
+
+The request has to often pass through a load balancer before even hitting the web server by Google.
+
+The load balancer uses multiple numbers of servers to distribute incoming network traffic to make sure no one server gets overwhelmed.
+- High Availability: It reroutes the traffic to the health servers and away from the unhealthy servers to make sure that high availability and reliability is maintained.
+
+6. Web Server
+
+Here, the load balancer sends the request to one of the web servers of Google that serves HTTP requests:
+
+- Request Handling: The web server accepts and acts upon the request to process for www.google.com. — **Static Content**: If the content is static, the web server retrieves the request and sends the result content (HTML, CSS, images) back to the browser.
+
+7. Application Server
+
+The web server sends the request for dynamic content to the application server:
+
+- Business Logic: The business logic provided in the application server is based on the dynamic content produced through script execution, database queries, or even interactions with other services.
+
+- Processing: Processes the request and prepares response by perhaps generating or modifying pages on-the-fly.
+
+8. Databases
+
+There are many dynamic requests in which data is required to be kept in a database.
+
+- Query Execution: In the database, the application server performs a query to retrieve, update, or delete data.
+
+- Data Storage: Powerful databases in Google make handling and storage of data pretty much easier.
+
+- Response: The application server returns the final response formulated after processing the returned necessary data from the database.
+
+Final-Response
+
+Response Compilation: The application server sends the generated content back to the web server.
+Data Transmission: Now, the response is sent back from the web server to the browser through the Load Balancer.
+Rendering: The browser receives the HTML, CSS, JavaScript, and other resources fetched. It then renders the website and displays the Google homepage.
+Conclusion
+
+From resolving DNS and securely transmitting data to load balancing and managing server processing through interaction with a database, loading something as simple as a web page — a process like loading https://www.google.com—is itself a process that is made of many subprocesses. All these pieces work together to give you the browsing experience that is fast, safe, and reliable. The next time you press the Enter button after typing a URL, you will at least partially realize the complex technology that’s working behind the scenes.
