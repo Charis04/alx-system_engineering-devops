@@ -4,12 +4,12 @@
 header_name="X-Served-By"
 header_value=$(hostname)
 
-config_file="/etc/nginx/nginx.conf"
+config_file="/etc/nginx/sites_enabled/default"
 
 # create backup file before making changes
 cp -p "$config_file" "$config_file.bak"
 
-sed -i "/http {/a \\ \\tadd_header ${header_name} \"${header_value}\";" "$config_file"
+sed -i "/server_name _/a \\ \\tadd_header ${header_name} \"${header_value}\";" "$config_file"
 
 
 
