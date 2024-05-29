@@ -3,11 +3,26 @@
 
 header_name="X-Served-By"
 header_value=$(hostname)
-
 config_file="/etc/nginx/sites_enabled/default"
+
+sudo apt-get update
+sudo apt-get install -y nginx
 
 # create backup file before making changes
 cp -p "$config_file" "$config_file.bak"
+
+# Creating an index.html page
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Performing a "moved permanently redirection" (301)
+new_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/besthor permanent;"
+sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-enabled/default
+
+# Creating a 404 Custom error page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+new_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+
+sudo sed -i "s/listen 80 default_server;/$new_string/" "$config_file"
 
 sed -i "/server_name _/a \\ \\tadd_header ${header_name} \"${header_value}\";" "$config_file"
 

@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
 insert
-this;;
 this;
+this;
+
+http {
+	# sdal
+	# dksflj
+}
 
 file_name="$0"
 arg="$1"

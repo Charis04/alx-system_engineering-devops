@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+header_name="X-Served-By"
+header_value=$(hostname)
+
+config_file="./test"
+
+cp -p "$config_file" "$config_file.bak"
+
+sed -i "/http {/a \\ \\tadd_header ${header_name} \"${header_value}\";" "$config_file"
