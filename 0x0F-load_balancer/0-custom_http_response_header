@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
-# Configure sever to send custom header
+# Customizing a 404-error_page
 
-header_name="X-Served-By"
-header_value=$(hostname)
-config_file="/etc/nginx/sites_enabled/default"
-
+# Updating Packages before performing installations
 sudo apt-get update
 sudo apt-get install -y nginx
-
-# create backup file before making changes
-cp -p "$config_file" "$config_file.bak"
 
 # Creating an index.html page
 echo "Hello World!" | sudo tee /var/www/html/index.html
@@ -22,15 +16,13 @@ sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-enabled/default
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 new_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
 
-sudo sed -i "s/listen 80 default_server;/$new_string/" "$config_file"
+sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-enabled/default
 
-sed -i "/server_name _/a \\ \\tadd_header ${header_name} \"${header_value}\";" "$config_file"
+# Creating an HTTP response header
+sudo sed -i "/server_name _/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
 
+# Testing configurations for syntax errors
+sudo nginx -t
 
-
-# reload nginx if config file ok or revert to bak otherwise
-if sudo nginx -t; then
-    sudo service nginx reload
-else
-    mv "$config_file.bak" "$config_file"
-fi
+# Restart nginx after implementing changes
+sudo service nginx restart
