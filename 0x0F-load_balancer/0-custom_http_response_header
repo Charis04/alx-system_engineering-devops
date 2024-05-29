@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Configure sever to send custom header
+
+header_name="X-Served-By"
+header_value=$(hostname)
+
+config_file="/etc/nginx/nginx.conf"
+
+# create backup file before making changes
+cp -p "$config_file" "$config_file.bak"
+
+sed -i "/http {/a \\ \\tadd_header ${header_name} \"${header_value}\";" "$config_file"
+
+
+
+# reload nginx if config file ok or revert to bak otherwise
+if sudo nginx -t; then
+    sudo service nginx reload
+else
+    mv "$config_file.bak" "$config_file"
+fi

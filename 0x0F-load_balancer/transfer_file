@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Transfers a file from client to server
+
+source_file="$1"
+host="$2"
+user="$3"
+identity_file="$4"
+
+if [ $# -lt 4 ]; then
+	scp "$source_file" ~/
+else
+	scp -o StrictHostKeyChecking=no -i "$identity_file" "$source_file" "$user"@"$host":~/
+fi
