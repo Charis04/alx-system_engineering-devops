@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 # A script that installs and configures HAproxy on server
 
-#HAPROXY_CFG="/etc/haproxy/haproxy.cfg"
 #WEB01_IP="54.144.157.5"
 #WEB02_IP="54.210.3.114"
-conf_file="haproxy.cfg"
+conf_file="/etc/haproxy/haproxy.cfg"
 
 apt-get update
 apt-get install -y haproxy
@@ -24,8 +23,8 @@ backend charis_servers
     timeout server 60s
     balance roundrobin
     mode http
-    sever web-01 54.144.157.5:80
-    sever web-02 54.210.3.114:80
+    sever web-01 54.144.157.5:80 check
+    sever web-02 54.210.3.114:80 check
 EOF
  
 # load config file
