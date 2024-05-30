@@ -5,8 +5,8 @@
 #WEB02_IP="54.210.3.114"
 conf_file="/etc/haproxy/haproxy.cfg"
 
-apt-get update
-apt-get install -y haproxy
+sudo apt-get update
+sudo apt-get install -y haproxy
 
 # backup config file before making changes
 #cp $HAPROXY_CFG ${HAPROXY_CFG}.bak
@@ -24,12 +24,12 @@ backend charis_servers
     sever web-01 54.144.157.5:80 check
     sever web-02 54.210.3.114:80 check
 "
- echo "$conf" >> "$conf_file"
+echo "$conf" >> "$conf_file"
 
 # load config file
-haproxy -f "$conf_file"
+sudo haproxy -f "$conf_file"
 
 # enable haproxy to be started by init script
-echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+sudo echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
-service haproxy start
+sudo service haproxy start
