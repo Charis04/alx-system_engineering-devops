@@ -11,29 +11,25 @@ apt-get install -y haproxy
 # backup config file before making changes
 #cp $HAPROXY_CFG ${HAPROXY_CFG}.bak
 
-cat <<EOF > $conf_file
+conf=\
+"
 frontend charis_http
     bind *:80
     mode http
-    timeout client 30s
     default_backend charis_servers
 
 backend charis_servers
-    timeout connect 10s
-    timeout server 60s
     balance roundrobin
     mode http
     sever web-01 54.144.157.5:80 check
     sever web-02 54.210.3.114:80 check
-EOF
- 
+"
+ echo "$conf" >> "$conf_file"
+
 # load config file
-haproxy -f $conf_file
+haproxy -f "$conf_file"
 
 # enable haproxy to be started by init script
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
-
-# Enable HAProxy in init.d
-systemctl enable haproxy
 
 service haproxy start
