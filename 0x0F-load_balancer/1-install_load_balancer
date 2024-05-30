@@ -30,6 +30,9 @@ EOF
 # load config file
 haproxy -f $conf_file
 
+# enable haproxy to be started by init script
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
 # Enable HAProxy in init.d
 systemctl enable haproxy
 
