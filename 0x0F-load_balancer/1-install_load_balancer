@@ -24,7 +24,7 @@ backend charis_servers
     sever 436725-web-01 54.144.157.5:80 check
     sever 436725-web-02 54.210.3.114:80 check
 "
-echo "$conf" >> "$conf_file"
+echo "$conf" | sudo tee -a "$conf_file"
 
 # load config file
 sudo haproxy -f "$conf_file"
