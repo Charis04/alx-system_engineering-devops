@@ -21,8 +21,8 @@ frontend charis_http
 backend charis_servers
     balance roundrobin
     mode http
-    sever web-01 54.144.157.5:80 check
-    sever web-02 54.210.3.114:80 check
+    sever 436725-web-01 54.144.157.5:80 check
+    sever 436725-web-02 54.210.3.114:80 check
 "
 echo "$conf" >> "$conf_file"
 
