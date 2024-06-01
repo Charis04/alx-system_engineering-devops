@@ -1,3 +1,5 @@
+# Puppet manifest that configures costum header
+
 node default {
   # Define the header name
   $header_name = 'X-Served-By'
