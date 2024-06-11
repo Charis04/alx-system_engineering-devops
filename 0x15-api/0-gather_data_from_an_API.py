@@ -29,4 +29,4 @@ for task in tasks:
 
 print(f"Employee {employee_name} is done with tasks({C_tasks}/{T_tasks}):")
 for task in completed:
-    print(f"\t{task}")
+    print(f"\t {task}")
