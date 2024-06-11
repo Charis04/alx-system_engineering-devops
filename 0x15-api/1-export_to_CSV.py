@@ -15,7 +15,7 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
 
     res = requests.get(f"{url}users/{employee_id}")
-    employee_name = res.json()['name']
+    employee_name = res.json()['username']
 
     # get tasks
     res = requests.get(f"{url}todos")
