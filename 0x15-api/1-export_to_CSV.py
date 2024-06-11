@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) < 2:
         exit
-    employee_id = int(sys.argv[1])
+    employee_id = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com/"
 
     res = requests.get(f"{url}users/{employee_id}")
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     C_tasks = 0
     user_data = []
     for task in tasks:
-        if task['userId'] == employee_id:
+        if task['userId'] == int(employee_id):
             user_data.append(
                 [employee_id, employee_name, task['completed'], task['title']]
                 )
@@ -33,4 +33,5 @@ if __name__ == "__main__":
     filename = f"{employee_id}.csv"
     with open(filename, "w", encoding="utf-8", newline="") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerows(user_data)
+        for row in user_data:
+            writer.writerow([str(item) for item in row])
