@@ -32,6 +32,6 @@ if __name__ == "__main__":
 
     filename = f"{employee_id}.csv"
     with open(filename, "w", encoding="utf-8", newline="") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        writer = csv.writer(csvfile)
         for row in user_data:
             writer.writerow([str(item) for item in row])
