@@ -22,22 +22,15 @@ if __name__ == "__main__":
     tasks = res.json()
     T_tasks = 0
     C_tasks = 0
-    completed = []
     user_data = []
     for task in tasks:
         if task['userId'] == employee_id:
             user_data.append(
-                {"USER_ID": employee_id,
-                 "USERNAME": employee_name,
-                 "TASK_COMPLETED_STATUS": task['completed'],
-                 "TASK_TITLE": task['title'],
-                 }
-                 )
+                [employee_id, employee_name, task['completed'], task['title']]
+                )
             T_tasks += 1
 
     filename = f"{employee_id}.csv"
     with open(filename, "w", encoding="utf-8", newline="") as csvfile:
-        fieldnames = list(user_data[0].keys())
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
+        writer = csv.writer(csvfile)
         writer.writerows(user_data)
