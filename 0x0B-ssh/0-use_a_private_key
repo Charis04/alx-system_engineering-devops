@@ -2,7 +2,7 @@
 # A script that logs into a server using a private key
 
 # Server address with username
-server="ubuntu@54.144.157.5"
+server="ubuntu@54.236.49.42"
 
 # Connect using SSH with private key
 ssh -i ~/.ssh/school $server
