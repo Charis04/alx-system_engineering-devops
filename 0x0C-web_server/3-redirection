@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 # Configure server to redirect
 
+# Update package lists
+sudo apt update
+sudo apt ugrade
+
+# Install Nginx
+sudo apt-get -y install nginx
+
 sudo service nginx stop
 
 new_site="https:\/\/charis.vzy.io\/"
