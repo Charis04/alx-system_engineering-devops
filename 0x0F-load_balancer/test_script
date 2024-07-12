@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+text="
+backend charis_http
+    balance roundrobin
+    mode http
+"
+
+echo "$text" | tee -a test_text

@@ -6,13 +6,13 @@
 conf_file="/etc/haproxy/haproxy.cfg"
 
 sudo apt-get update
+sudo apt upgrade -y
 sudo apt-get install -y haproxy
 
 # backup config file before making changes
 #cp $HAPROXY_CFG ${HAPROXY_CFG}.bak
 
-conf=\
-"
+conf="
 frontend charis_http
         bind *:80
         mode http
@@ -21,8 +21,8 @@ frontend charis_http
 backend charis_servers
         balance roundrobin
         mode http
-        server 436725-web-01 54.144.157.5:80 check
-        server 436725-web-02 54.210.3.114:80 check
+        server 436725-web-01 54.236.49.42:80 check
+        server 436725-web-02 100.25.204.17:80 check
 "
 echo "$conf" | sudo tee -a "$conf_file"
 
