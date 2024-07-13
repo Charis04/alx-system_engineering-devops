@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Bash script that will display information about subdomains.
+
+domain="$1"
+subdomain="$2"
+
+if [[ $# -eq 0 || $# -gt 2 ]]; then
+    echo "Usage: $0 <domain> [subdomain]"
+    exit 1
+fi
+
+subdomains=("www" "lb-01" "web-01" "web-02")
+
+if [ $# -eq 1 ]; then
+    for sub in "${subdomains[@]}"; do
+        dig "$sub"."$domain" | grep -A1 "ANSWER SECTION" | awk -v subd="$sub" 'NF > 3 {printf "The subdomain %s is a %s record and points to %s\n", subd, $4, $5}'
+    done
+else
+    dig "$subdomain"."$domain" | grep -A1 "ANSWER SECTION" | awk -v subd="$subdomain" 'NF > 3 {printf "The subdomain %s is a %s record and points to %s\n", subd, $4, $5}'
+fi
