@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Write bash script to find out whats stopping nginx from listening to port 80
 
+rm /etc/nginx/sites-enabled/default
 sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
