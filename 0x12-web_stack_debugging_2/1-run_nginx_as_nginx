@@ -19,6 +19,3 @@ chown -R nginx:nginx /var/www /var/log/nginx /var/lib/nginx
 # Restart nginx to apply the changes
 systemctl restart nginx
 
-# Ensure nginx is running as the nginx user
-ps aux | grep nginx
-
