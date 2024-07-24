@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Get the username from the argument
+username="$1"
+
+# Run the whoami command as the specified user
+sudo -u "$username" whoami
