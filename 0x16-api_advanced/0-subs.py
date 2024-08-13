@@ -6,6 +6,7 @@ subreddit is given, the function should return 0.
 """
 import requests
 
+
 def number_of_subscribers(subreddit):
     """
     Queries the Reddit API to get the number of subscribers for a given
@@ -23,7 +24,7 @@ def number_of_subscribers(subreddit):
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
-        #response.raise_for_status()
+        # response.raise_for_status()
 
         data = response.json()
         return data['data']['subscribers']
