@@ -20,7 +20,10 @@ def number_of_subscribers(subreddit):
     """
 
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'your_user_agent'}
+    headers = {'User-Agent': 'my user agent'}
+
+    if subreddit is not str:
+        return 0
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
