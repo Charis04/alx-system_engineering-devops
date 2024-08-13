@@ -20,9 +20,9 @@ def number_of_subscribers(subreddit):
     """
 
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'my user agent'}
+    headers = {'User-Agent': 'python:app_charis:1.0.0 (by /u/charis)'}
 
-    if type(subreddit) is not str:
+    if subreddit is None or type(subreddit) is not str:
         return 0
 
     try:
