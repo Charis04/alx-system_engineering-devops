@@ -14,7 +14,7 @@ def top_ten(subreddit):
         subreddit (str): The name of the subreddit.
     """
 
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
     headers = {'User-Agent': 'python:app_charis:1.0.0 (by /u/charis)'}
 
     if subreddit is None or type(subreddit) is not str:
@@ -26,8 +26,12 @@ def top_ten(subreddit):
         response.raise_for_status()
 
         data = response.json()['data']['children']
-        for i in range(10):
-            print(data[i]['data']['title'])
+        lim = 10
+        for post in data:
+            lim -= 1
+            if lim <= 0:
+                return
+            print(post['data']['title'])
 
     except Exception:
         print(None)
