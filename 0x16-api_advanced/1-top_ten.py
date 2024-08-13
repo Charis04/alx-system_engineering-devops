@@ -18,7 +18,8 @@ def top_ten(subreddit):
     headers = {'User-Agent': 'python:app_charis:1.0.0 (by /u/charis)'}
 
     if subreddit is None or type(subreddit) is not str:
-        return 0
+        print(None)
+        return
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
@@ -28,5 +29,6 @@ def top_ten(subreddit):
         for i in range(10):
             print(data[i]['data']['title'])
 
-    except requests.exceptions.RequestException:
+    except Exception:
         print(None)
+        return
